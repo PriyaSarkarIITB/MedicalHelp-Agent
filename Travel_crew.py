@@ -17,9 +17,12 @@ travel_agent_crew = Crew(
     verbose=True
 )
 
-medical_agents_input = {
+travel_agents_input = {
     'destination':'california',
     'budget':'400000',
     'max_days':'10',
     'peoples':'5'
 }
+
+result = travel_agent_crew.kickoff(inputs=travel_agents_input)
+print(result)
