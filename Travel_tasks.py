@@ -22,7 +22,7 @@ travel_package_task = Task(
         "It reviews the {destination} and tries to give the best route"
         "After reviewing the {budget} dollar and {destination} it gives best route and best package"
         "After recognizing the destination, budget dollar, max_days and peoples it suggest the best possible package"
-        "Analyze the {destination}, {budget} dollar, {people} and {max_days} after this gives the best package"
+        "Analyze the {destination}, {budget} dollar, {peoples} and {max_days} after this gives the best package"
         "It always try to give best possible output"
     ),
     expected_output=(
