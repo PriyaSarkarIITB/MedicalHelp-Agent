@@ -1,35 +1,71 @@
 from crewai import Task
 from Travel_tools import search_tool, scrape_tool
-from Travel_agent import travel_Itinerary_agent, travel_package_agent
+from Travel_agent import Travel_Destination_Agent, Travel_Route_Planner_Agent, Activity_Recomendation_Agent, Booking_Research_Agent
 
-travel_Itinerary_task = Task(
+Travel_Destination_Task = Task(
     description=(
-        "Creates the route according to the place ({destination}) given by the user"
-        "Review the ({destination}) and give the best route according to the ({budget}) dollar "
-        "Use statistical modeling and machine learning techniques to analyze route and package according to user's interest"
-        "identify both the ({destination} & {max_days}) and predict the route"
-        "It always try to give best possible output"
+        "Research on the weather plans of the {destination} according to the dates given by the user's"
+        "Review the {destination} and {max_days} to suggest the best time to plan"
+        "Suggest the local cultural programs, festivals and concerts of the {destination}"
+        "All legal documents required for the {destination} depends on the number of days"
+        "It always try to give best possible output according to user input"
+        "Provides the best travel insights of the {destination}"
     ),
     expected_output=(
-        "Gives the suggestion of route according to the {destination} & {max_days}"
-        "review the {destination} & {max_days} again to give the best possible output."
+        "Gives the best possible routes for daily travel maintaining the overall {budget} dollars budget"
+        "Suggest the best plan according to the {destination} and {max_days} given by the user"
+        "Gives the most refined plan after reviewing the destination"
     ),
-    agent=travel_Itinerary_agent
+    agent = Travel_Destination_Agent
 )
 
-travel_package_task = Task(
+Travel_Route_Planner_Task = Task(
     description=(
         "It reviews the {destination} and tries to give the best route"
-        "After reviewing the {budget} dollar and {destination} it gives best route and best package"
-        "After recognizing the destination, budget dollar, max_days and peoples it suggest the best possible package"
-        "Analyze the {destination}, {budget} dollar, {peoples} and {max_days} after this gives the best package"
-        "It always try to give best possible output"
+        "After reviewing the {destination} and {max_days} is plans the routes and local places for daily travel"
+        "Analyze the weather condition of the local places and plans the route accordingly"
+        "Continously analyzing the local routes for travelling and also local insights"
+        "It tries to maintain the overall {budgets} dollars for the whole trip"
+        "It always try to give best possible output after analyzing repeatedly"
     ),
     expected_output=(
-        "Try to give more prominent route according to {budget} dollar dollar & {max_days}"
-        "Gives the output as users interest"
-        "Gives proper output according to users {destination}, {max_days}, {budget} dollar and {peoples}"
-        "List of possible conditions and recommendations."
+        "Provides the most efficient routes according to the {destination} destination,{budgets} dollars budgets, {max_days} maximum number of days "
+        "Suggest the best route that hassle free, time efficient and comfortable journey to the travellers"
+        "Provides each & everyday planning of the routes with timings when to start"
+        "Provides the activities to be done and which places to take rest and for how much time"
     ),
-    agent = travel_package_agent
+    agent = Travel_Route_Planner_Agent
+)
+
+Activity_Recomendation_Task = Task(
+    description = (
+        "It reviews the {destination} current weather and plan the activity according to it"
+        "It analyzes the {budgets} dollars budget and max {peoples} peoples and plans the activity accordingly"
+        "It analyzes the local condition of spot and plans the activities"
+        "It plans the safe and the enjoying activities to perform"
+        "It maintains the time according to the daily target of travelling"
+    ),
+    expected_output = (
+        "It provides the best safe and dynamic activities by maintaing the overall {budgets} dollars budget"
+        "It suggest the best place to click pictures"
+        "It suggest the best landmarks to sit and spend the quality time by enjoying the view of the landmarks"
+        "It provides the opening and closing timing of the activities"
+        "It suggest best deal breaking activities once in a life time"
+    ),
+    agent = Activity_Recomendation_Agent
+)
+
+Booking_Research_Task =Task(
+    description = (
+      "It analyzes the best place according to the user {budgets} dollars budget and for {max_days} days"
+      "It compares the hotel prices, transport prices and gives the best choices according to {peoples} peoples and {budgets} dollars budget and {max_days} days"
+      "Also compares the prices of local transport and it depends upon the {peoples} peoples for the journey"
+    ),
+    expected_output = (
+        "It suggests the best transport system according to max {peoples}"
+        "It provides the best hotels to stay according to the total number of {peoples}, maximum {max_days} days, and budget to be maintained"
+        "It suggest places those are close to the spots"
+        "It provides the best places"
+    ),
+    agent = Booking_Research_Agent
 )
